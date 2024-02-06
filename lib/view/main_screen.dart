@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:e_commerce/constants/my_functions.dart';
+import 'package:e_commerce/test.dart';
 import 'package:flutter/material.dart';
 
 import '../components/big_item.dart';
@@ -194,39 +196,56 @@ class CategoriesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var textTheme = Theme.of(context).textTheme;
+    // var textTheme = Theme.of(context).textTheme;
     return Container(
       margin: const EdgeInsets.only(top: 10),
       width: size.width,
       height: size.height / 7,
       child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: categoriesList.length,
-          itemBuilder: (ctx, index) {
-            return FadeInRight(
-              delay: Duration(milliseconds: index * 300),
-              child: Column(
-                children: [
-                  Container(
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: categoriesList.length,
+        itemBuilder: (ctx, index) {
+          String heroTag = 'DEMO_$index'; // Unique tag for each item
+          return InkWell(
+            onTap: () {
+              print('haill');
+              callNext(
+                DestinationScreen(tag: heroTag, icon: categoriesList[index].img),
+                context,
+              );
+            },
+            child: Hero(
+              tag: heroTag,
+              child: FadeInRight(
+                delay: Duration(milliseconds: index * 300),
+                child: Column(
+                  children: [
+                    Container(
                       margin: const EdgeInsets.all(6),
                       width: size.width / 4.7,
                       height: size.height / 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         image: DecorationImage(
-                            image: AssetImage(categoriesList[index].img),
-                            fit: BoxFit.cover),
-                      )),
-                  Text(
-                    categoriesList[index].title,
-                    style: textTheme.headlineMedium,
-                  )
-                ],
+                          image: AssetImage(categoriesList[index].img),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      categoriesList[index].title,
+                      // style: textTheme.headlineMedium,
+                    )
+                  ],
+                ),
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
+
   }
 }
 
@@ -255,7 +274,7 @@ class OffersSection extends StatelessWidget {
             children: [
               Text(
                 MyStrings.offersText,
-                style: textTheme.displayMedium,
+                style: textTheme.displaySmall?.copyWith(fontSize:25.0),
               ),
             ],
           ),
@@ -343,7 +362,7 @@ class CustomAppBar extends StatelessWidget {
                       ),
                       Text(
                         "Home",
-                        style: textTheme.displayLarge,
+                        // style: textTheme.displayLarge,
                       ),
                       Expanded(child: Container()),
                       IconButton(

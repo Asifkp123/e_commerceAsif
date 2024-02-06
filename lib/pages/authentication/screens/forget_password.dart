@@ -1,4 +1,5 @@
 
+import 'package:e_commerce/constants/my_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -30,8 +31,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                 delay: 1,
                 child: IconButton(
                     onPressed: () {
-                      GoRouter.of(context).pop();
-                    },
+finish(context);                    },
                     icon: const Icon(
                       CupertinoIcons.back,
                       size: 35,

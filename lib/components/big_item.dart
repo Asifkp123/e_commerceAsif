@@ -45,11 +45,11 @@ class BigItemSection extends StatelessWidget {
                       children: [
                         Text(
                           itemList[index].title,
-                          style: textTheme.headline5,
+                          style: textTheme.headline5?.copyWith(fontSize: 15),
                         ),
                         Text(
                           "\$${itemList[index].price}",
-                          style: textTheme.headline6,
+                          style: textTheme.headline6?.copyWith(fontSize: 15),
                         )
                       ],
                     ),

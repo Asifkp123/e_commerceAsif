@@ -19,14 +19,14 @@ class MiddleText extends StatelessWidget {
           children: [
             Text(
               text,
-              style: textTheme.displayMedium,
+              style: textTheme.displaySmall?.copyWith(fontSize:20.0),
             ),
             Expanded(child: Container()),
             Row(
               children: [
                 Text(
                   MyStrings.viewAllText,
-                  style: textTheme.displaySmall,
+                  // style: textTheme.displaySmall,
                 ),
                 const SizedBox(
                   width: 5,
